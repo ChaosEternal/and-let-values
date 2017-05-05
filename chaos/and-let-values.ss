@@ -23,7 +23,6 @@
 	((kw (?bind0 ?bind1 ...) ?body0 ...)
 	 (syntax-case #'?bind0 ()
 	   (((?b0 ?b1 ...) ?exp)
-	    (not (identifier? #'?b0))
 	    (let* ((?check-b0 (car (generate-temporaries (list #'?b0)))))
 	      #`(let-values (((#,?check-b0 ?b1 ...) ?exp))
 		  (and (equal? #,?check-b0 ?b0)
