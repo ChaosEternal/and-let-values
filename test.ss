@@ -68,6 +68,16 @@
 	  ((t11 t21) (values "foo" "bar")))
 	 (cons t11 t21)))
     ;;=> ("foo" . "bar")
-    "testcase8"))]
+    "testcase8"))
+  (('stillpass c9)
+   (values
+    (let ((va 1))
+      (and-let*-values-check
+	 (((va t11) (values 2 "foo"))
+	  ((t11 t21) (values "foo" "bar")))
+	 (cons t11 t21)
+	 (else 'stillpass)))
+    ;;=> stillpass
+    "testcase9"))]
  (format (current-output-port) "All these tests:\n ~s \n are finished successfully \n" 
-	 (list c1 c2 c3 c4 c5 c6)))
+	 (list c1 c2 c3 c4 c5 c6 c7 c8 c9)))
