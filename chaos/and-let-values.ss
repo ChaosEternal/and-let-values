@@ -28,7 +28,7 @@
 	    (identifier? #'?b0)
 	    #`(let-values (?bind0)
 		(if ?b0
-		    (and-let*-values (?bind1 ...) ?body0 ...)
+		    (and-let*-values (?bind1 ...) ?body0 ... (else ?expr0 ...))
 		    (begin ?expr0 ...))))))
 	((_ () ?body0 ... (else ?expr0 ...))
 	 #'(begin ?body0 ...))
@@ -44,7 +44,7 @@
 	    (let* ((?check-b0 (car (generate-temporaries (list #'?b0)))))
 	      #`(let-values (((#,?check-b0 ?b1 ...) ?exp))
 		  (if (equal? #,?check-b0 ?b0)
-		      (kw (?bind1 ...) ?body0 ...)
+		      (kw (?bind1 ...) ?body0 ... (else ?expr0 ...))
 		      (begin ?expr0 ...)))))))
 	((_ () ?body0 ... (else ?expr0 ...))
 	 #'(begin ?body0 ...))
